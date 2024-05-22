@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kidslearningapp/card.dart';
+import 'package:kidslearningapp/widgets/card.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({super.key});

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kidslearningapp/homepage.dart';
+import 'package:kidslearningapp/screens/homepage.dart';
+import 'package:kidslearningapp/widgets/card.dart';
 
 
 void main() {
@@ -13,9 +14,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Kid Learning App',
       theme: ThemeData(
+        fontFamily: 'Poppins',
         primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Homepage(),
+      home: CardScreen(),
     );
   }
 }
