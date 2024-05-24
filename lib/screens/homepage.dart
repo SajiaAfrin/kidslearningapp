@@ -1,132 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:kidslearningapp/data.dart';
+import 'package:kidslearningapp/screens/details_screen.dart';
 import 'package:kidslearningapp/widgets/card.dart';
 
-class Homepage extends StatelessWidget {
+class Homepage extends StatefulWidget {
   const Homepage({super.key});
+
   @override
+  State<Homepage> createState() => _HomepageState();
+}
+
+class _HomepageState extends State<Homepage> {
+
+  List<AnimalInfo> card = [] ;
+  @override
+  void initState (){
+    card= animallist;
+    super.initState();
+  }
   Widget build(BuildContext context) {
-    return Scaffold(
-    
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(children: [
-            Container(
-              padding: EdgeInsets.all(26),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Welcome Back',
-                    style: TextStyle(
-                      fontSize: 32,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(height: 32),
-                  Text(
-                    'What would you like to learn today?',
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.grey[600],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.all(8.0),
-              child: GestureDetector(
-                onTap: () {
-              Navigator.push(
-                context,
-                PageRouteBuilder(
-                  pageBuilder: (context, animation, secondaryAnimation) =>
-                      CardScreen(),
-                  transitionsBuilder:
-                      (context, animation, secondaryAnimation, child) {
-                    return FadeTransition(
-                      opacity: animation,
-                      child: child,
-                    );
-                  },
-                ),
-              );
-            },
+    return SafeArea(
+      child: Scaffold(
+      
+        body: ListView.builder(
+          shrinkWrap: true, 
+          padding: EdgeInsets.all(5.0),
+          itemCount: card.length,
+          itemBuilder: (
+            BuildContext context, int index)=> CardScreen(
+              card: card[index],
+              onPressed: (){
+                Get.to(DetailsScreen( detailcard :card[index],));
+              },
           
-                child: Container(
-                  height: 120,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 5,
-                    itemBuilder: (context, index) {
-                      return Container(
-                        width: 100,
-                        margin: EdgeInsets.only(right: 16),
-                        decoration: BoxDecoration(
-                          color: Colors.blue[200],
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Column(
-                          children: [
-                            Text(
-                              'Category',
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Image.asset("assets/elephant.png"),
-                            
-                          ],
-                        ),
-                      );
-                    },
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(height: 16),
-            Container(
-              padding: EdgeInsets.all(16),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Recommended',
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 16),
-                    Container(
-                      height: 240,
-                      child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: 3,
-                          itemBuilder: (context, index) {
-                            return Container(
-                              width: 200,
-                              margin: EdgeInsets.only(right: 16),
-                              decoration: BoxDecoration(
-                                color: Colors.blue[100],
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(8),
-                                      child: Image.asset("assets/elephant.png"),
-                                    )
-                                  ]),
-                            );
-                          }),
-                    ),
-                  ]),
-            ),
-          ]),
-        ),
+         ) ,)
+    
+        
       ),
     );
   }

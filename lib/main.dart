@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:kidslearningapp/screens/homepage.dart';
-import 'package:kidslearningapp/widgets/card.dart';
 
 
 void main() {
@@ -10,7 +10,7 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Kid Learning App',
       theme: ThemeData(
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: CardScreen(),
+      home: const Homepage(),
     );
   }
 }

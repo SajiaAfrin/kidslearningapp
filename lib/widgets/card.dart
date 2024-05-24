@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:kidslearningapp/data.dart';
 
-import '../screens/details_screen.dart';
 
 class CardScreen extends StatelessWidget {
-  const CardScreen({super.key});
+  
+  const CardScreen({super.key, required this.card, required this.onPressed});
+  final AnimalInfo card;
+ final void onPressed;
+
+  
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Center(
-          child: Container(
+    return GestureDetector(
+      child: Container(
             padding: EdgeInsets.all(10.0),
             width: double.infinity,
             height: 230,
@@ -18,14 +21,14 @@ class CardScreen extends StatelessWidget {
                   left: 40,
                   child: Container(
                     decoration: BoxDecoration(
-                        color: Colors.pink,
+                        color: card.color,
                         borderRadius: BorderRadius.circular(10.0)),
                     constraints: BoxConstraints(maxHeight: 180, maxWidth: 300),
                   )),
               Positioned(
                 top: 15.0,
                 child: Hero(
-                  tag: 'animal',
+                  tag: card.name,
                   child: Image.asset(
                     'assets/elephant.png',
                     width: 150.0,
@@ -58,15 +61,15 @@ class CardScreen extends StatelessWidget {
                   ),
                   ),
                   
-    
+      
                    ),
                 
                 
               )
             ]),
           ),
-        ),
-      ),
     );
+      
+    
   }
 }
