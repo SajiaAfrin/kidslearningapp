@@ -11,19 +11,28 @@ class DetailsScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Learn"),
       ),
-      body: GestureDetector(
-        child: Hero(
-          tag: detailcard.iconImage,
-          child: Image.asset(
-            'assets/elephant.png',
-            width: 150.0,
-            height: 150.0,
-          ),
+      body: Column(
+        children: [
           
-        ),
-        onTap: (){
-          Get.back();
-        },
+          Container(
+            decoration: BoxDecoration(
+              color: detailcard.color,
+            ),
+            child: GestureDetector(
+              child: Hero(
+                tag: detailcard.iconImage,
+                child: Image(
+                  image :  AssetImage(detailcard.iconImage),
+                 )
+                ),
+                
+              
+              onTap: (){
+                Get.back();
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

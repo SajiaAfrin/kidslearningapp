@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Kid Learning App',
       theme: ThemeData(
-        fontFamily: 'Poppins',
+        fontFamily: 'Pumpkin Story',
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
