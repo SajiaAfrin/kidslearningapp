@@ -12,30 +12,39 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  List<AnimalInfo> cards = [];
+  List<AnimalInfo> animals = [];
   @override
   void initState() {
-    cards = animallist;
+    animals = animallist;
     super.initState();
   }
 
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          body: ListView.builder(
+          appBar: AppBar(
+            backgroundColor: Colors.white,
+           elevation: 0,
             
-        shrinkWrap: true,
-        padding: EdgeInsets.all(5.0),
-        itemCount: cards.length,
-        itemBuilder: (BuildContext context, int index) => CardScreen(
-          card: cards[index],
-          onPressed: () {
-            Get.to(DetailsScreen(
-              detailcard: cards[index],
-            ));
-          },
-        ),
-      )),
+            title: Center(
+                child: Text(
+              "Learn",
+              style: TextStyle(fontSize: 36,color: Colors.black),
+            )),
+          ),
+          body: ListView.builder(
+            shrinkWrap: true,
+            padding: EdgeInsets.all(5.0),
+            itemCount: animals.length,
+            itemBuilder: (context, index) => CardScreen(
+              animal: animals[index],
+              onPressed: () {
+                Get.to(DetailsScreen(
+                  animal: animals[index],
+                ));
+              },
+            ),
+          )),
     );
   }
 }

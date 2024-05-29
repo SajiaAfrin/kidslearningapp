@@ -3,30 +3,32 @@ import 'package:get/get.dart';
 import 'package:kidslearningapp/data.dart';
 
 class DetailsScreen extends StatelessWidget {
-  DetailsScreen({required this.detailcard});
-  final AnimalInfo detailcard;
+  DetailsScreen({required this.animal});
+  final AnimalInfo animal;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Learn"),
+        backgroundColor: animal.color,
+        
       ),
       body: Column(
         children: [
           
           Container(
             decoration: BoxDecoration(
-              color: detailcard.color,
+              color: animal.color,
             ),
             child: GestureDetector(
               child: Hero(
-                tag: detailcard.iconImage,
+                tag: animal.iconImage,
                 child: Image(
-                  image :  AssetImage(detailcard.iconImage),
+                  image :  AssetImage(animal.iconImage),
                  )
                 ),
                 
-              
+             
               onTap: (){
                 Get.back();
               },
