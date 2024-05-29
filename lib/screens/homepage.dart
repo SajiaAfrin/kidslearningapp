@@ -22,16 +22,21 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.white,
-           elevation: 0,
-            
-            title: Center(
-                child: Text(
-              "Learn",
-              style: TextStyle(fontSize: 36,color: Colors.black),
-            )),
+           appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0.0,
+          centerTitle: true,
+          title: Text(
+           "Learn",
+            style: TextStyle(fontSize: 36, color: Colors.black),
           ),
+          leading: Icon(
+            Icons.filter_list,
+            color: Colors.amber,
+            size: 40.0,
+          ),
+          actions: [Image(image: AssetImage("assets/c_fish.png"))],
+        ),
           body: ListView.builder(
             shrinkWrap: true,
             padding: EdgeInsets.all(5.0),
