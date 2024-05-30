@@ -29,3 +29,19 @@ class SubHeader extends StatelessWidget {
     
   }
 }
+class PictureCard extends StatelessWidget {
+ PictureCard({required this.imageUrl});
+ final String imageUrl;
+
+  @override
+  Widget build(BuildContext context) {
+    return  Container(
+      padding: EdgeInsets.all(10),
+      child: FadeInImage.assetNetwork(image: imageUrl,placeholder: "assets/loading.gif",),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.0)),
+      height: 100,
+      width: 150,
+      margin: EdgeInsets.only(left: 10, right: 10),
+    );
+  }
+}

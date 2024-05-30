@@ -11,7 +11,7 @@ class DetailsScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: animal.color,
+          backgroundColor: Colors.transparent,
           elevation: 0.0,
           centerTitle: true,
           title: Text(
@@ -20,20 +20,19 @@ class DetailsScreen extends StatelessWidget {
           ),
           leading: Icon(
             Icons.filter_list,
-            color: Colors.amber,
+            color: Colors.black,
             size: 40.0,
           ),
-         
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              height: 300,
+              height: 200,
               padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: animal.color,
+
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(30),
                     bottomRight: Radius.circular(30)),
@@ -50,28 +49,58 @@ class DetailsScreen extends StatelessWidget {
               ),
             ),
             Container(
-                color: Colors.white,
-                height: 300,
-                child: SingleChildScrollView(
-                    padding: EdgeInsets.all(20),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Header(text: animal.name),
-                        SubHeader(text: animal.paragraph),
-                        SizedBox(
-                          height: 10,
-                        ),
-                         Header(text: "Lifespan"),
-                        SubHeader(text: animal.lifespan),
-                         SizedBox(
-                          height: 10,
-                        ),
-                         Header(text: "Speed"),
-                        SubHeader(text: animal.speed),
-                      ],
-                    ))),
+              color: Colors.white,
+              height: 300,
+              child: SingleChildScrollView(
+                  padding: EdgeInsets.all(20),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Header(text: animal.name),
+                      SubHeader(text: animal.paragraph),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Header(text: "Lifespan"),
+                      SubHeader(text: animal.lifespan),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Header(text: "Speed"),
+                      SubHeader(text: animal.speed),
+                    ],
+                  )),
+            ),
+            Expanded(
+                child: Container(
+                    color: Colors.white,
+                    child: animal.images.length != 0
+                        ? Container(
+                            padding: EdgeInsets.only(left: 20, right: 10),
+                            color: Colors.white,
+                            width: double.infinity,
+                            child: Expanded(
+                                child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Header(text: "Image"),
+                                Expanded(
+                                    child: ListView.builder(
+                                        shrinkWrap: true,
+                                        scrollDirection: Axis.horizontal,
+                                        itemCount: animal.images.length,
+                                        itemBuilder: (context, index) =>
+                                            PictureCard(
+                                              imageUrl: animal.images[index],
+                                            )))
+                              ],
+                            )),
+                          )
+                        : Container(
+                            color: Colors.white,
+                          )))
           ],
         ),
       ),

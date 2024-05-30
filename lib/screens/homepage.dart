@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kidslearningapp/data.dart';
 import 'package:kidslearningapp/screens/details_screen.dart';
+import 'package:kidslearningapp/screens/profile.dart';
 import 'package:kidslearningapp/widgets/card.dart';
 
 class Homepage extends StatefulWidget {
@@ -30,12 +31,21 @@ class _HomepageState extends State<Homepage> {
            "Learn",
             style: TextStyle(fontSize: 36, color: Colors.black),
           ),
-          leading: Icon(
-            Icons.filter_list,
-            color: Colors.amber,
-            size: 40.0,
-          ),
-          actions: [Image(image: AssetImage("assets/c_fish.png"))],
+          leading: GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ProfilePage(), // Replace with your desired screen
+              ),
+            );
+          },
+          child: Icon(Icons.filter_list,
+           color: Colors.black,
+            size: 40.0,),
+        ),
+         
+          // actions: [Image(image: AssetImage("assets/c_bluebird.png",))],
         ),
           body: ListView.builder(
             shrinkWrap: true,
